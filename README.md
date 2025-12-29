@@ -24,6 +24,7 @@ This dataset features ratings data of 400 movies from 1097 research participants
   - [Sensation Seeking and Movie Experience](#sensation-seeking-and-movie-experience)
   - [Personality Types](#personality-types)
   - [Movie Ratings and Viewer Characteristics](#movie-ratings-and-viewer-characteristics)
+  - [Franchise Movie Ratings Consistency](#franchise-movie-ratings-consistency)
 
 ## EDA and Data Cleaning
 The dataset could be generally divided into 3 main parts: movie ratings, viewer characteristics, viewer demographics.\
@@ -109,9 +110,35 @@ For these 2 clusters, each cluster center represents:\
 ## Movie Ratings and Viewer Characteristics
 To examine rating differences between demographic groups or movie types, I used the Mann-Whitney U Test, which compares two independent distributions without requiring normality—well suited for real-world rating data.
 
-<img width="695" height="468" alt="lionking" src="https://github.com/user-attachments/assets/284c197e-de0c-4306-b24e-b8a32158846a" />
+<img width="600" height="500" alt="test_results" src="https://github.com/user-attachments/assets/aa0aea8a-42fa-4185-8183-02fbddd9def8" />
+
+Below is a summary of the test results: 
+
+| Question / Movie Comparison                        | Null Hypothesis (H₀)                                      | Alternative (H₁)                       | Result                | Conclusion                                                      |
+| -------------------------------------------------- | --------------------------------------------------------- | -------------------------------------- | --------------------- | --------------------------------------------------------------- |
+| Popular vs Niche movies                        | Popular movies are **not rated higher** than niche movies | Popular movies have **higher ratings** | **Reject H₀**         | Popular movies are rated significantly higher than niche movies |
+| Shrek (2001): Gender                           | No rating difference between **female and male** viewers  | Ratings differ between genders         | **Fail to reject H₀** | No evidence of gender-based rating difference                   |
+| The Lion King (1994): Only-child vs Siblings   | Only-child viewers rate **≤ sibling viewers**             | Only-child viewers rate **higher**     | **Fail to reject H₀** | No evidence only-children enjoy it more                         |
+| The Wolf of Wall Street (2013): Social vs Solo | Social viewers rate ≤ solo viewers                        | Social viewers rate higher             | **Fail to reject H₀** | Preference to watch socially does not indicate higher rating    |
 
 
+## Franchise Movie Ratings Consistency
+To answer whether franchise movies have consistent ratings across all titles, I used Kruskal-Wallis Test to determine if the median is consistent across different numberings for each franchise (difference in mean ranks). Kruskal-Wallis is a non-parametric alternative to ANOVA that tests whether multiple independent groups come from the same distribution, making it appropriate here because movie ratings are ordinal (not normally distributed) and we are comparing more than two related groups per franchise.
+
+| Franchise                    | H Statistic | p-value  | # Movies Tested | Conclusion                                     |
+| ---------------------------- | ----------- | -------- | --------------- | ---------------------------------------------- |
+| **Star Wars**                | 230.584     | 8.02e-48 | 6               | Reject H₀ → Ratings are not consistent    |
+| **Harry Potter**             | 3.331       | 0.343    | 4               | **Fail to reject H₀ → Ratings are consistent** |
+| **The Matrix**               | 48.379      | 3.12e-11 | 3               | Reject H₀ → Ratings are not consistent     |
+| **Indiana Jones**            | 45.794      | 6.27e-10 | 4               | Reject H₀ → Ratings are not consistent     |
+| **Jurassic Park**            | 46.591      | 7.64e-11 | 3               | Reject H₀ → Ratings are not consistent     |
+| **Pirates of the Caribbean** | 20.644      | 3.29e-05 | 3               | Reject H₀ → Ratings are not consistent     |
+| **Toy Story**                | 24.386      | 5.07e-06 | 3               | Reject H₀ → Ratings are not consistent     |
+| **Batman**                   | 190.535     | 4.23e-42 | 3               | Reject H₀ → Ratings are not consistent     |
+
+Based on the test, we can see that all franchises except for Star Wars have inconsistent ratings.
+
+<img width="600" height="500" alt="franchise" src="https://github.com/user-attachments/assets/72913976-3ad8-45dc-ad7f-429f5851b70a" />
 
 
 
