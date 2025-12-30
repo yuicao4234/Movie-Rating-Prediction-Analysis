@@ -25,6 +25,7 @@ This dataset features ratings data of 400 movies from 1097 research participants
   - [Personality Types](#personality-types)
   - [Movie Ratings and Viewer Characteristics](#movie-ratings-and-viewer-characteristics)
   - [Franchise Movie Ratings Consistency](#franchise-movie-ratings-consistency)
+  - [Prediction Model: Decision Tree Regressor with 5-fold cross-validation and GridSearchCV](#prediction-model:-decision-tree-regressor-with-5--fold-cross--validation-and-GridSearchCV)
 
 ## EDA and Data Cleaning
 The dataset could be generally divided into 3 main parts: movie ratings, viewer characteristics, viewer demographics.\
@@ -139,6 +140,24 @@ To answer whether franchise movies have consistent ratings across all titles, I 
 Based on the test, we can see that all franchises except for Star Wars have inconsistent ratings.
 
 <img width="600" height="500" alt="franchise" src="https://github.com/user-attachments/assets/72913976-3ad8-45dc-ad7f-429f5851b70a" />
+
+## Prediction Model: Decision Tree Regressor with 5-fold cross-validation and GridSearchCV
+
+For this task, I built a Decision Tree Regressor to predict movie ratings using personality PCA components as input features. Decision trees are non-linear models that repeatedly split the data into sub-groups based on feature values, making them interpretable and capable of capturing complex interactions.
+
+To prevent overfitting and select the best configuration, I applied GridSearchCV with 5-fold cross-validation, testing multiple values for max_depth, min_samples_leaf, and min_samples_split. This allowed the model to be trained and validated across multiple subsets of the data, ensuring more robust performance. The best model was then retrained on the full training set and evaluated on a hold-out test set. 
+
+The best model achieved RMSE of 0.6938, indicating moderate predictive performance. Feature importance analysis showed that Artistic Interest and Social Energy were the strongest predictors of movie preferences among all personality traits.
+
+
+## Next Steps
+Overall, the analysis shows weak relationships between the variables, and the prediction model performance is relatively weak. This could be caused by:
+
+1. imputation method - maybe just remove nans would be better and cleaner
+2. PCA: may need revision
+3. some of the viewer characteristic variables are binary (yes/no) questions instead of scale. maybe changing the response to binary values would better explain the variables
+4. prediction model - need to look closer and determine which model produces the best performance. Should try multiple different models
+
 
 
 
