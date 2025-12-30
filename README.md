@@ -1,6 +1,7 @@
 # Movie-Rating-Prediction-Analysis
 This is a rework of the Capstone Project for the DS112 (Intro to Data Science) course. In this project, I'm analyzing the relationships between movie ratings and viewers' preferences and oersonality traits, and finally building prediction models for movie ratings based on viewers' characteristics. 
 
+
 ## Project Overview
 From the project description provided by instructor:  "The cover story is that you are working for a major entertainment corporation that is trying to get a better handle on both what makes a good movie as well as a better understanding of the viewers." 
 
@@ -26,6 +27,9 @@ This dataset features ratings data of 400 movies from 1097 research participants
   - [Movie Ratings and Viewer Characteristics](#movie-ratings-and-viewer-characteristics)
   - [Franchise Movie Ratings Consistency](#franchise-movie-ratings-consistency)
   - [Prediction Model: Decision Tree Regressor with 5-fold cross-validation and GridSearchCV](#prediction-model:-decision-tree-regressor-with-5--fold-cross--validation-and-GridSearchCV)
+
+## Notes
+- 12/2/2025: Ver.1
 
 ## EDA and Data Cleaning
 The dataset could be generally divided into 3 main parts: movie ratings, viewer characteristics, viewer demographics.\
